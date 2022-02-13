@@ -11,6 +11,9 @@ import About from "./routes/About";
 import FindWorld from "./routes/FindWorld";
 import MakeWorld from "./routes/MakeWorld";
 import MyProfile from "./routes/MyProfile";
+import World from "./routes/World";
+import CreatePost from "./routes/CreatePost";
+import CommentRoute from "./routes/CommentRoute";
 
 function App() {
   const [isLogined, setIsLogined] = useState(false);
@@ -54,6 +57,30 @@ function App() {
           element={
             <PrivateRoute>
               <MakeWorld />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/world/:worldname"
+          element={
+            <PrivateRoute>
+              <World />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/world/:worldname/create"
+          element={
+            <PrivateRoute>
+              <CreatePost />
+            </PrivateRoute>
+          }
+        ></Route>
+        <Route
+          path="/world/:worldname/:ID"
+          element={
+            <PrivateRoute>
+              <CommentRoute />
             </PrivateRoute>
           }
         ></Route>

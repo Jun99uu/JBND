@@ -9,6 +9,7 @@ import {
   deleteObject,
 } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
+import { Link } from "react-router-dom";
 
 const db = getFirestore();
 const storage = getStorage();
@@ -47,8 +48,8 @@ function MyProfile() {
     }
   }, []);
 
-  useEffect(() => {
-    getDownloadURL(ref(storage, photo))
+  useEffect(async () => {
+    await getDownloadURL(ref(storage, photo))
       .then((url) => {
         const xhr = new XMLHttpRequest();
         xhr.responseType = "blob";
@@ -139,7 +140,13 @@ function MyProfile() {
         <h4>아직 소속된 세상이 없네요😢</h4>
       ) : (
         world.map((worldname) => (
-          <div key={worldname}>{`전부 ${worldname}덕인 세상`}</div>
+          <div key={worldname}>
+            <Link to={`/world/${worldname}`}>
+              <button>{`전부 ${worldname}덕인 세상`}</button>
+            </Link>
+
+            <br />
+          </div>
         ))
       )}
     </div>
