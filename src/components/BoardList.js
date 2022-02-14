@@ -8,8 +8,10 @@ import {
   arrayRemove,
   getFirestore,
   getDoc,
+  setDoc,
+  deleteDoc,
 } from "firebase/firestore";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const db = getFirestore();
 
@@ -31,6 +33,10 @@ function BoardList({
   const [likeit, setLike] = useState("🤍");
   const [likeNum, setLikeNum] = useState(like.length);
   const [btnLock, setLock] = useState(false);
+  const [modify, setModify] = useState(false);
+  const [modibtn, setModiBtn] = useState("수정");
+  const [modiPosting, setModiPost] = useState(posting);
+  const navigate = useNavigate();
 
   const year = date.substr(0, 4);
   const month = date.substr(4, 2);
@@ -101,6 +107,38 @@ function BoardList({
     }
   }, []);
 
+  const deleteHandler = async () => {
+    const DocRef = doc(db, "World", worldname, "Contents", id);
+    const message =
+      "게시물을 삭제한 후에는 복구할 수 없습니다.\n삭제하시겠습니까?";
+    if (window.confirm(message)) {
+      await deleteDoc(DocRef);
+      navigate(0);
+    }
+  };
+
+  const modifyHandler = async (e) => {
+    setModify((prevState) => !prevState);
+    setModiBtn((prevState) => (prevState === "수정" ? "수정완료" : "수정"));
+    if (modibtn === "수정완료") {
+      const message =
+        "게시물을 수정한 후에는 복구할 수 없습니다.\n수정하시겠습니까?";
+      if (window.confirm(message)) {
+        const DocRef = doc(db, "World", worldname, "Contents", id);
+        try {
+          await setDoc(DocRef, { Posting: modiPosting }, { merge: true });
+          navigate(0);
+        } catch (e) {
+          console.error(e);
+        }
+      }
+    }
+  };
+
+  const postingHandler = (e) => {
+    setModiPost(e.target.value);
+  };
+
   return (
     <div>
       <div>
@@ -109,13 +147,23 @@ function BoardList({
       <div>{name}</div>
       {email === myID ? (
         <div>
-          <button>수정</button>
-          <button>삭제</button>
+          <button onClick={modifyHandler}>{modibtn}</button>
+          <button onClick={deleteHandler}>삭제</button>
         </div>
       ) : null}
       <img src={photo} width="300px" height="300px" />
       <div>#{hashtag}</div>
-      <div>{posting}</div>
+      {modify ? (
+        <div>
+          <input
+            placeholder="수정할 내용을 입력해주세요."
+            value={modiPosting}
+            onChange={postingHandler}
+          />
+        </div>
+      ) : (
+        <div>{posting}</div>
+      )}
       <button onClick={likeHandler} disabled={btnLock}>
         {likeit}
       </button>

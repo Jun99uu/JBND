@@ -82,6 +82,9 @@ function CommentRoute() {
         {saved.map((savedObject) => (
           <CommentList
             key={savedObject.id}
+            worldname={worldname}
+            ID={ID}
+            commentID={savedObject.id}
             date={savedObject.date}
             email={savedObject.email}
             name={savedObject.name}
