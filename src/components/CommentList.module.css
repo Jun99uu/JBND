@@ -1,0 +1,81 @@
+.box {
+  background-color: white;
+  width: 80%;
+  padding: 20px;
+  border-radius: 1rem;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  margin: auto;
+  margin-top: 30px;
+  position: relative;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.profile img {
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+}
+
+.infor {
+  margin-left: 20px;
+}
+
+.comment {
+  background-color: #eeeeee;
+  padding: 7px;
+  margin-top: 10px;
+  border-radius: 0.3rem;
+  font-weight: bold;
+}
+
+.modiCom {
+  border: 0;
+  outline: 0;
+  background-color: #eeeeee;
+  padding: 7px;
+  width: 80%;
+  margin-top: 5px;
+  border-radius: 0.3rem;
+  margin-right: 10px;
+}
+
+.twoBtn {
+  position: absolute;
+  top: 15%;
+  right: 2%;
+}
+
+.twoBtn button {
+  border: none;
+  outline: none;
+  padding: 5px;
+  margin: 5px;
+  transition: all 0.25s;
+  border-radius: 0.3rem;
+}
+
+.modiBtn:hover {
+  background-color: #c1deae;
+  font-weight: bold;
+}
+
+.deleteBtn:hover {
+  background-color: #b33030;
+  color: white;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+  .box {
+    width: 100%;
+  }
+  .twoBtn {
+    position: absolute;
+    top: 5%;
+    right: 2%;
+  }
+}

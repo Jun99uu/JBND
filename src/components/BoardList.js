@@ -1,4 +1,9 @@
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
+import {
+  getStorage,
+  ref,
+  getDownloadURL,
+  deleteObject,
+} from "firebase/storage";
 import { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import {
@@ -12,6 +17,7 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import { Link, useNavigate } from "react-router-dom";
+import styles from "./BoardList.module.css";
 
 const db = getFirestore();
 
@@ -108,11 +114,14 @@ function BoardList({
   }, []);
 
   const deleteHandler = async () => {
-    const DocRef = doc(db, "World", worldname, "Contents", id);
     const message =
       "게시물을 삭제한 후에는 복구할 수 없습니다.\n삭제하시겠습니까?";
     if (window.confirm(message)) {
+      const DocRef = doc(db, "World", worldname, "Contents", id);
+      const imgRef = ref(storage, image);
       await deleteDoc(DocRef);
+      await deleteObject(imgRef);
+
       navigate(0);
     }
   };
@@ -140,37 +149,52 @@ function BoardList({
   };
 
   return (
-    <div>
-      <div>
+    <div className={styles.box}>
+      <div className={styles.name}>{name}</div>
+      <div className={styles.date}>
         {year}년 {month}월 {day}일 {hour}시 {min}분
       </div>
-      <div>{name}</div>
+
       {email === myID ? (
-        <div>
-          <button onClick={modifyHandler}>{modibtn}</button>
-          <button onClick={deleteHandler}>삭제</button>
+        <div className={styles.twoBtn}>
+          <button onClick={modifyHandler} className={styles.modi}>
+            {modibtn}
+          </button>
+          <button onClick={deleteHandler} className={styles.delete}>
+            삭제
+          </button>
         </div>
       ) : null}
-      <img src={photo} width="300px" height="300px" />
-      <div>#{hashtag}</div>
-      {modify ? (
-        <div>
-          <input
-            placeholder="수정할 내용을 입력해주세요."
-            value={modiPosting}
-            onChange={postingHandler}
-          />
+
+      <img src={photo} className={styles.photo} />
+
+      <div className={styles.posting}>
+        <div className={styles.upper}>
+          <div className={styles.hashtag}>#{hashtag}</div>
+          <div className={styles.like}>
+            <button onClick={likeHandler} disabled={btnLock}>
+              {likeit}
+            </button>
+            <div className={styles.likenum}>{likeNum}</div>
+
+            <Link to={`/world/${worldname}/${id}`} className={styles.comment}>
+              <button>📢</button>
+            </Link>
+          </div>
         </div>
-      ) : (
-        <div>{posting}</div>
-      )}
-      <button onClick={likeHandler} disabled={btnLock}>
-        {likeit}
-      </button>
-      <div>좋아요 {likeNum}개</div>
-      <Link to={`/world/${worldname}/${id}`}>
-        <button>🗨</button>
-      </Link>
+
+        {modify ? (
+          <div className={styles.modiPost}>
+            <input
+              placeholder="수정할 내용을 입력해주세요."
+              value={modiPosting}
+              onChange={postingHandler}
+            />
+          </div>
+        ) : (
+          <div className={styles.post}>{posting}</div>
+        )}
+      </div>
     </div>
   );
 }

@@ -1,0 +1,251 @@
+@font-face {
+  font-family: "GowunBatang-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.box {
+  width: 40%;
+  background-color: #eeeeee;
+  padding: 80px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  border-radius: 3rem;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  text-align: center;
+}
+
+.box h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.box form input {
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: white;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  margin-bottom: 30px;
+}
+
+.box form input::file-selector-button {
+  display: none;
+}
+
+.profileImg {
+  width: 300px;
+  border-radius: 1.5rem;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  margin-bottom: 10px;
+  transition: all 0.25s;
+}
+
+.profileImg:hover {
+  transform: scale(1.05);
+}
+
+.saveBtn {
+  background-color: #ff6464;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  line-height: 1em;
+  outline: none;
+  padding: 12px 40px 10px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.saveBtn:before,
+.saveBtn:after {
+  border-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+  border-width: 0;
+  content: "";
+  height: 24px;
+  position: absolute;
+  width: 24px;
+}
+
+.saveBtn:before {
+  border-color: #ff6464;
+  border-right-width: 2px;
+  border-top-width: 2px;
+  right: -5px;
+  top: -5px;
+}
+.saveBtn:after {
+  border-bottom-width: 2px;
+  border-color: #ff6464;
+  border-left-width: 2px;
+  bottom: -5px;
+  left: -5px;
+}
+.saveBtn:hover,
+.saveBtn.hover {
+  background-color: #ff6464;
+}
+.saveBtn:hover:before,
+.saveBtn.hover:before,
+.saveBtn:hover:after,
+.saveBtn.hover:after {
+  height: 100%;
+  width: 100%;
+}
+
+.secondBox {
+  width: 25%;
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.listBox {
+  font-size: 1.5rem;
+  background-color: #eeeeee;
+  padding: 10px 10px;
+  border-radius: 1rem;
+  margin-bottom: 20px;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+}
+
+.worldBox {
+  font-size: 1.5rem;
+  width: 100%;
+  padding: 15px;
+  border-radius: 1rem;
+  border: none;
+  outline: none;
+  margin-top: 30px;
+
+  text-transform: uppercase;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.worldBox:hover {
+  background-color: #65c18c;
+  box-shadow: 0px 15px 20px rgba(36, 187, 127, 0.226);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  font-family: "GowunBatang-Regular";
+  font-weight: bold;
+}
+
+.enter {
+  display: none;
+}
+
+@media screen and (max-width: 1420px) {
+  .box h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  .listBox {
+    font-size: 1rem;
+  }
+  .link {
+    font-size: 1.2rem;
+  }
+  .enter {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1220px) {
+  .container {
+    display: inline;
+  }
+
+  .profileImg {
+    width: 230px;
+  }
+
+  .box {
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 40px;
+  }
+
+  .secondBox {
+    width: 50%;
+    margin-left: 25%;
+  }
+
+  .enter {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .container {
+    display: inline;
+  }
+
+  .box {
+    padding: 40px;
+  }
+  .box h1 {
+    font-size: 1.5rem;
+  }
+
+  .box form input {
+    width: 60%;
+  }
+
+  .box h2 {
+    font-size: 1.3rem;
+  }
+
+  .profileImg {
+    width: 150px;
+  }
+
+  .box {
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 40px;
+  }
+
+  .secondBox {
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  .link {
+    font-size: 1.1rem;
+  }
+
+  .enter {
+    display: block;
+  }
+}

@@ -1,0 +1,131 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  text-align: center;
+  background-color: #eeeeee;
+  width: 80%;
+  border-radius: 1.5rem;
+  padding: 30px;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+}
+
+.box h1 {
+  margin-bottom: 20px;
+}
+
+.photo {
+  width: 300px;
+  height: 300px;
+}
+
+.fileinput {
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: white;
+  margin-bottom: 20px;
+}
+
+.fileinput::file-selector-button {
+  display: none;
+}
+
+.content {
+  margin-top: 5px;
+  border: none;
+  outline: none;
+  width: 80%;
+  padding: 10px;
+  text-align: center;
+}
+
+.radio {
+  border: none;
+  opacity: 0;
+  margin-bottom: 10px;
+}
+
+.radio + label {
+  transition: all 0.25s;
+  font-size: 15px;
+}
+
+.radio:hover + label {
+  font-size: 17px;
+}
+
+.radio:checked + label {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.completeBtn {
+  background-color: #91c483;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 13px;
+  line-height: 1em;
+  margin-top: 20px;
+  outline: none;
+  padding: 12px 40px 10px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.completeBtn:before,
+.completeBtn:after {
+  border-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+  border-width: 0;
+  content: "";
+  height: 20px;
+  position: absolute;
+  width: 20px;
+}
+
+.completeBtn:before {
+  border-color: #91c483;
+  border-right-width: 2px;
+  border-top-width: 2px;
+  right: -5px;
+  top: -5px;
+}
+.completeBtn:after {
+  border-bottom-width: 2px;
+  border-color: #91c483;
+  border-left-width: 2px;
+  bottom: -5px;
+  left: -5px;
+}
+.completeBtn:hover,
+.completeBtn.hover {
+  background-color: #91c483;
+}
+.completeBtn:hover:before,
+.completeBtn.hover:before,
+.completeBtn:hover:after,
+.completeBtn.hover:after {
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (max-width: 450px) {
+  .box h1 {
+    font-size: 1.3rem;
+  }
+  .photo {
+    width: 200px;
+    height: 200px;
+  }
+}

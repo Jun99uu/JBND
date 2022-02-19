@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { setDoc, doc } from "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
+import styles from "./Register.module.css";
 
 const db = getFirestore();
 
@@ -81,7 +82,12 @@ function Register() {
   };
 
   return (
-    <div>
+    <div className={styles.box}>
+      <h2>
+        전부 네 덕인 세상을
+        <br className={styles.enter} />
+        만들어보세요!
+      </h2>
       <form onSubmit={handleOnSubmit}>
         <input
           name="name"
@@ -127,9 +133,9 @@ function Register() {
           onChange={handleOnChange}
           value={nickname}
         />
-
         {errorDisplay === null ? null : <div>{errorDisplay}</div>}
-        <button>완료</button>
+        <br />
+        <button className={styles.complete}>완료</button>
       </form>
     </div>
   );

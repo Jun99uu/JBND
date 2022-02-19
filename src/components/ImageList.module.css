@@ -1,0 +1,21 @@
+.imglist {
+  animation: fadein 0.5s;
+  animation-direction: alternate;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  overflow: hidden;
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .imglist {
+    height: 280px;
+  }
+}

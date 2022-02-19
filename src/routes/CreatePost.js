@@ -4,6 +4,7 @@ import { getAuth } from "firebase/auth";
 import { getStorage, ref, uploadString } from "firebase/storage";
 import { doc, getFirestore, setDoc, getDoc } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
+import styles from "./CreatePost.module.css";
 
 const db = getFirestore();
 
@@ -16,7 +17,7 @@ function CreatePost() {
   const [date, setDate] = useState("");
   const [image, setImage] = useState("");
   const [posting, setPosting] = useState("");
-  const [hashtag, setHash] = useState("");
+  const [hashtag, setHash] = useState("사랑해");
   const [attachment, setAttachment] = useState();
   const navigate = useNavigate();
 
@@ -112,76 +113,86 @@ function CreatePost() {
   };
 
   return (
-    <div>
-      <h1>우리 {worldname}…</h1>
-      <form onSubmit={onSubmitHandler}>
-        <img src={attachment} width="300px" height="300px" />
-        <br />
-        <input
-          name="file"
-          type="file"
-          accept="image/*"
-          onChange={handleOnChange}
-          value={image}
-          required
-        />
-        <br />
+    <div className={styles.container}>
+      <div className={styles.box}>
+        <h1>우리 {worldname}…</h1>
+        <form onSubmit={onSubmitHandler}>
+          <img src={attachment} className={styles.photo} />
+          <br />
+          <input
+            name="file"
+            type="file"
+            accept="image/*"
+            onChange={handleOnChange}
+            value={image}
+            required
+            className={styles.fileinput}
+          />
+          <br />
 
-        <input
-          placeholder="내용을 작성해주세요"
-          required
-          type="text"
-          onChange={postingChange}
-        />
-        <br />
+          <input
+            type="radio"
+            readOnly
+            id="귀여워"
+            checked={hashtag === "귀여워"}
+            onClick={() => tagHandler("귀여워")}
+            className={styles.radio}
+          />
+          <label htmlFor="귀여워">#귀여워💘</label>
 
-        <input
-          type="radio"
-          readOnly
-          id="귀여워"
-          checked={hashtag === "귀여워"}
-          onClick={() => tagHandler("귀여워")}
-        />
-        <label htmlFor="귀여워">#귀여워💘</label>
+          <input
+            type="radio"
+            id="잘생겼어"
+            readOnly
+            checked={hashtag === "잘생겼어"}
+            onClick={() => tagHandler("잘생겼어")}
+            className={styles.radio}
+          />
+          <label htmlFor="잘생겼어">#잘생겼어🤤</label>
 
-        <input
-          type="radio"
-          id="잘생겼어"
-          readOnly
-          checked={hashtag === "잘생겼어"}
-          onClick={() => tagHandler("잘생겼어")}
-        />
-        <label htmlFor="잘생겼어">#잘생겼어🤤</label>
+          <input
+            type="radio"
+            id="예뻐"
+            readOnly
+            checked={hashtag === "예뻐"}
+            onClick={() => tagHandler("예뻐")}
+            className={styles.radio}
+          />
+          <label htmlFor="예뻐">#예뻐😍</label>
 
-        <input
-          type="radio"
-          id="예뻐"
-          readOnly
-          checked={hashtag === "예뻐"}
-          onClick={() => tagHandler("예뻐")}
-        />
-        <label htmlFor="예뻐">#예뻐😍</label>
+          <input
+            type="radio"
+            id="사랑해"
+            readOnly
+            checked={hashtag === "사랑해"}
+            onClick={() => tagHandler("사랑해")}
+            className={styles.radio}
+          />
+          <label htmlFor="사랑해">#사랑해😘</label>
 
-        <input
-          type="radio"
-          id="사랑해"
-          readOnly
-          checked={hashtag === "사랑해"}
-          onClick={() => tagHandler("사랑해")}
-        />
-        <label htmlFor="사랑해">#사랑해😘</label>
+          <input
+            type="radio"
+            id="개웃겨"
+            readOnly
+            checked={hashtag === "개웃겨"}
+            onClick={() => tagHandler("개웃겨")}
+            className={styles.radio}
+          />
+          <label htmlFor="개웃겨">#개웃겨😆</label>
+          <br />
 
-        <input
-          type="radio"
-          id="개웃겨"
-          readOnly
-          checked={hashtag === "개웃겨"}
-          onClick={() => tagHandler("개웃겨")}
-        />
-        <label htmlFor="개웃겨">#개웃겨😆</label>
-        <br />
-        <button>완료</button>
-      </form>
+          <input
+            placeholder="내용을 작성해주세요"
+            required
+            type="text"
+            onChange={postingChange}
+            className={styles.content}
+          />
+          <br />
+
+          <button className={styles.completeBtn}>완료</button>
+        </form>
+      </div>
     </div>
   );
 }

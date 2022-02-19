@@ -1,0 +1,41 @@
+.box {
+  background-color: white;
+  padding: 20px;
+  border-radius: 1rem;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  width: 80%;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+.box form input {
+  border: 0;
+  outline: 0;
+  background-color: #eeeeee;
+  padding: 7px;
+  width: 80%;
+  margin-top: 5px;
+  border-radius: 0.3rem;
+  margin-right: 10px;
+}
+
+.box form button {
+  border: none;
+  outline: none;
+  background-color: #d8d8d8;
+  padding: 7px;
+  border-radius: 0.3rem;
+  font-weight: bold;
+  transition: all 0.25s;
+}
+
+.box form button:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+  .box {
+    width: 100%;
+  }
+}

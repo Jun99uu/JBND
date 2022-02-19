@@ -1,0 +1,106 @@
+@font-face {
+  font-family: "Cafe24Ohsquareair";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2202@1.0/Cafe24Ohsquareair.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.container {
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  font-family: "Cafe24Ohsquareair";
+}
+
+.logo {
+  width: 150px;
+}
+
+.mainMenu > ul,
+.mainMenuactive > ul {
+  display: flex;
+  list-style: none;
+  -webkit-padding-start: 0px;
+}
+
+.mainMenu > ul > li,
+.mainMenuactive > ul > li {
+  padding: 8px 24px;
+}
+
+.signMenu > ul,
+.signMenuactive > ul {
+  display: flex;
+  list-style: none;
+  -webkit-padding-start: 0px;
+}
+
+.signMenu > ul > li,
+.signMenuactive > ul > li {
+  padding: 8px 12px;
+}
+
+.mainMenu > ul > li:hover,
+.mainMenuactive > ul > li:hover {
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+.signMenu > ul > li:hover,
+.signMenuactive > ul > li:hover {
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+.navbar_togleBtn {
+  padding: 6px;
+  display: none;
+  text-decoration: none;
+  font-size: 22px;
+  position: absolute;
+  right: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .mainMenu,
+  .signMenu {
+    width: 100%;
+    display: none;
+  }
+
+  .mainMenuactive,
+  .signMenuactive {
+    width: 100%;
+  }
+
+  .mainMenu > ul,
+  .signMenu > ul,
+  .mainMenuactive > ul,
+  .signMenuactive > ul {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+  }
+  .mainMenu > ul > li,
+  .signMenu > ul > li,
+  .mainMenuactive > ul > li,
+  .signMenuactive > ul > li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar_togleBtn {
+    display: block;
+  }
+}

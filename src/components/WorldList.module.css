@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 80%;
+  background-color: #fdeff4;
+  margin-top: 30px;
+  margin-bottom: 120px;
+  border-radius: 1rem;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+}
+
+.worldbox {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  width: 50%;
+}
+
+.world {
+  padding: 30px;
+  margin: 20px;
+  background-color: #ffc0d3;
+  border-radius: 1rem;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  font-size: 1.3rem;
+  font-weight: bold;
+  transition: all 0.5s;
+}
+
+.world:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+  .worldbox {
+    width: 90%;
+  }
+
+  .world {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,188 @@
+.box {
+  background-color: white;
+  width: 80%;
+  margin: auto;
+  margin-top: 50x;
+  margin-bottom: 50px;
+  padding: 30px;
+  border-radius: 1.5rem;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  position: relative;
+}
+
+.photo {
+  width: 350px;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 1.2rem;
+  background-color: #54bab9;
+  width: 100px;
+  padding: 10px;
+  margin: auto;
+  border-radius: 0.7rem;
+  margin-bottom: 5px;
+}
+
+.date {
+  font-size: 1rem;
+  background-color: #54bab9;
+  color: white;
+  width: 60%;
+  margin: auto;
+  padding: 3px;
+  border-radius: 0.7rem;
+  margin-bottom: 10px;
+}
+
+.twoBtn {
+  position: absolute;
+  top: 4%;
+  left: 83%;
+}
+
+.twoBtn button {
+  margin: 5px;
+  width: 60px;
+  padding: 5px;
+  border: 0;
+  outline: 0;
+  border-radius: 0.5rem;
+  background-color: rgb(194, 194, 194);
+  color: white;
+}
+
+.modi:hover {
+  transform: scale(1.1);
+  background-color: #ffd32d;
+  font-weight: bold;
+}
+
+.delete:hover {
+  transform: scale(1.1);
+  background-color: #b33030;
+  color: white;
+  font-weight: bold;
+}
+
+.posting {
+  width: 90%;
+  background-color: rgb(194, 194, 194);
+  border-radius: 1rem;
+  padding: 15px;
+  margin: auto;
+  margin-top: 5px;
+  position: relative;
+}
+
+.hashtag {
+  background-color: white;
+  border-radius: 0.3rem;
+  width: 100px;
+  font-weight: bold;
+  padding: 2px;
+}
+
+.post {
+  background-color: white;
+  padding: 5px;
+  margin-top: 10px;
+  font-weight: bold;
+  border-radius: 0.3rem;
+}
+
+.upper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.like {
+  display: flex;
+  align-items: center;
+}
+
+.like button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+  transition: all 0.4s;
+}
+
+.like button:hover {
+  transform: scale(1.2);
+}
+
+.comment {
+  margin-left: 15px;
+}
+
+.modiPost input {
+  border: none;
+  width: 90%;
+  padding: 5px;
+  border-radius: 0.3rem;
+  margin-top: 5px;
+  text-align: center;
+}
+
+@media screen and (max-width: 900px) {
+  .photo {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .box {
+    width: 95%;
+  }
+  .name {
+    font-weight: bold;
+    font-size: 1.1rem;
+    width: 70px;
+    padding: 8px;
+  }
+  .date {
+    font-size: 0.9rem;
+    width: 80%;
+    padding: 3px;
+  }
+  .twoBtn {
+    position: absolute;
+    top: 4%;
+    left: 65%;
+  }
+
+  .twoBtn button {
+    margin: 2px;
+    width: 45px;
+    padding: 5px;
+    border: 0;
+    outline: 0;
+    border-radius: 0.5rem;
+    background-color: rgb(194, 194, 194);
+    color: white;
+    font-size: 0.5rem;
+  }
+
+  .hashtag {
+    font-size: 0.8rem;
+  }
+  .like button {
+    font-size: 1.2rem;
+  }
+
+  .post {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .box {
+    width: 100%;
+    padding: 15px;
+  }
+}

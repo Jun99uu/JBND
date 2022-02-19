@@ -1,0 +1,368 @@
+.box {
+  text-align: center;
+  width: 100%;
+}
+
+.enter {
+  display: none;
+}
+
+.firstbox {
+  width: 70%;
+  background-color: #eeeeee;
+  text-align: center;
+  padding: 30px;
+  border-radius: 1.5rem;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  margin: auto;
+}
+
+.secondbox {
+  width: 80%;
+  background-color: #eeeeee;
+  text-align: center;
+  padding: 30px;
+  border-radius: 1.5rem;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  margin: auto;
+  margin-top: 40px;
+  position: relative;
+}
+
+.finding form input {
+  text-align: center;
+  border: none;
+  margin: 15px;
+  padding: 15px;
+  height: 40px;
+  width: 300px;
+}
+
+.findBtn {
+  background-color: #ff6464;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 13px;
+  line-height: 1em;
+  margin-top: 20px;
+  outline: none;
+  padding: 12px 40px 10px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.findBtn:before,
+.findBtn:after {
+  border-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+  border-width: 0;
+  content: "";
+  height: 20px;
+  position: absolute;
+  width: 20px;
+}
+
+.findBtn:before {
+  border-color: #ff6464;
+  border-right-width: 2px;
+  border-top-width: 2px;
+  right: -5px;
+  top: -5px;
+}
+.findBtn:after {
+  border-bottom-width: 2px;
+  border-color: #ff6464;
+  border-left-width: 2px;
+  bottom: -5px;
+  left: -5px;
+}
+.findBtn:hover,
+.findBtn.hover {
+  background-color: #ff6464;
+}
+.findBtn:hover:before,
+.findBtn.hover:before,
+.findBtn:hover:after,
+.findBtn.hover:after {
+  height: 100%;
+  width: 100%;
+}
+
+.findingList button {
+  width: 60%;
+  padding: 20px;
+  margin: 20px;
+  background-color: #ffc0d3;
+  border-radius: 0.8rem;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.5s;
+  border: 0;
+  outline: 0;
+}
+
+.findingList button:hover {
+  transform: scale(1.1);
+}
+
+.registerWorld {
+  position: absolute;
+  background-color: #dfdfdf;
+  width: 60%;
+  padding: 60px;
+  border-radius: 1.3rem;
+  border: 4px solid;
+  top: 20%;
+  left: 20%;
+  transition: all 0.25s;
+}
+
+.registerWorld form input {
+  text-align: center;
+  border: none;
+  margin: 10px;
+  padding: 5px;
+  height: 30px;
+  width: 80%;
+}
+
+.complete {
+  background-color: #91c483;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1em;
+  margin-top: 20px;
+  outline: none;
+  padding: 12px 40px 10px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-right: 30px;
+}
+
+.complete:before,
+.complete:after {
+  border-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+  border-width: 0;
+  content: "";
+  height: 24px;
+  position: absolute;
+  width: 24px;
+}
+
+.complete:before {
+  border-color: #91c483;
+  border-right-width: 2px;
+  border-top-width: 2px;
+  right: -5px;
+  top: -5px;
+}
+.complete:after {
+  border-bottom-width: 2px;
+  border-color: #91c483;
+  border-left-width: 2px;
+  bottom: -5px;
+  left: -5px;
+}
+.complete:hover,
+.complete.hover {
+  background-color: #91c483;
+}
+.complete:hover:before,
+.complete.hover:before,
+.complete:hover:after,
+.complete.hover:after {
+  height: 100%;
+  width: 100%;
+}
+
+.complete {
+  background-color: #91c483;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1em;
+  margin-top: 20px;
+  outline: none;
+  padding: 12px 40px 10px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.complete:before,
+.complete:after {
+  border-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+  border-width: 0;
+  content: "";
+  height: 24px;
+  position: absolute;
+  width: 24px;
+}
+
+.complete:before {
+  border-color: #91c483;
+  border-right-width: 2px;
+  border-top-width: 2px;
+  right: -5px;
+  top: -5px;
+}
+.complete:after {
+  border-bottom-width: 2px;
+  border-color: #91c483;
+  border-left-width: 2px;
+  bottom: -5px;
+  left: -5px;
+}
+.complete:hover,
+.complete.hover {
+  background-color: #91c483;
+}
+.complete:hover:before,
+.complete.hover:before,
+.complete:hover:after,
+.complete.hover:after {
+  height: 100%;
+  width: 100%;
+}
+
+.close {
+  background-color: #ff6464;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1em;
+  margin-top: 20px;
+  outline: none;
+  padding: 12px 40px 10px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.close:before,
+.close:after {
+  border-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+  border-width: 0;
+  content: "";
+  height: 24px;
+  position: absolute;
+  width: 24px;
+}
+
+.close:before {
+  border-color: #ff6464;
+  border-right-width: 2px;
+  border-top-width: 2px;
+  right: -5px;
+  top: -5px;
+}
+.close:after {
+  border-bottom-width: 2px;
+  border-color: #ff6464;
+  border-left-width: 2px;
+  bottom: -5px;
+  left: -5px;
+}
+.close:hover,
+.close.hover {
+  background-color: #ff6464;
+}
+.close:hover:before,
+.close.hover:before,
+.close:hover:after,
+.close.hover:after {
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .findingList button {
+    width: 80%;
+  }
+  .enter {
+    display: block;
+  }
+  .finding form input {
+    width: 70%;
+  }
+
+  .findBtn {
+    font-size: 10px;
+    line-height: 1em;
+    margin-top: 20px;
+    outline: none;
+    padding: 12px 30px 10px;
+    position: relative;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  .registerWorld {
+    padding: 20px;
+    width: 80%;
+    top: 20%;
+    left: 10%;
+  }
+
+  .registerWorld h2 {
+    font-size: 1.2rem;
+  }
+
+  .complete {
+    font-size: 10px;
+    margin-top: 10px;
+    padding: 12px 20px 10px;
+    margin-right: 10px;
+  }
+
+  .close {
+    font-size: 10px;
+    margin-top: 10px;
+    padding: 12px 20px 10px;
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .firstbox h2 {
+    font-size: 1.2rem;
+  }
+
+  .findingList button {
+    font-size: 0.8rem;
+  }
+
+  .registerWorld h2 {
+    font-size: 1rem;
+  }
+
+  .registerWorld h4 {
+    font-size: 0.7rem;
+  }
+}

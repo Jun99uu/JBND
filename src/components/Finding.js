@@ -10,6 +10,7 @@ import {
 } from "firebase/firestore";
 import { getAuth, updateProfile } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import styles from "./Finding.module.css";
 
 const db = getFirestore();
 
@@ -129,42 +130,57 @@ function Finding() {
   };
 
   return (
-    <div>
-      <form onSubmit={submitHandler}>
-        <input
-          placeholder="찾고 싶은 세상을 입력해주세요."
-          type="text"
-          value={name}
-          onChange={onChangeHandler}
-        />
-        <button>찾기</button>
-      </form>
-      {world.map((worldname) => (
-        <div key={worldname}>
-          <button
-            onClick={(e) => {
-              selectWorld(worldname, e);
-            }}
-          >{`전부 ${worldname}덕인 세상`}</button>
-        </div>
-      ))}
-      {hidden ? (
-        <div>
-          <h2>전부 {searched}덕인 세상 가입하기</h2>
-          <form onSubmit={registerworld}>
+    <div className={styles.box}>
+      <div className={styles.firstbox}>
+        <h2>
+          당신의 세상을 찾고,
+          <br className={styles.enter} /> 바로 가입해보세요!
+        </h2>
+      </div>
+      <div className={styles.secondbox}>
+        <div className={styles.finding}>
+          <form onSubmit={submitHandler}>
             <input
+              placeholder="찾고 싶은 세상을 입력해주세요."
               type="text"
-              placeholder="세상 코드를 입력해주세요."
-              required
-              onChange={codeChange}
-              value={code}
+              value={name}
+              onChange={onChangeHandler}
             />
-            {errorMsg !== "" ? <h3>{errorMsg}</h3> : null}
-            <button>가입하기</button>
+            <button className={styles.findBtn}>찾기</button>
           </form>
-          <button onClick={closeHandler}>닫기</button>
+          {world.map((worldname) => (
+            <div key={worldname} className={styles.findingList}>
+              <button
+                onClick={(e) => {
+                  selectWorld(worldname, e);
+                }}
+              >{`전부 ${worldname}덕인 세상`}</button>
+            </div>
+          ))}
         </div>
-      ) : null}
+
+        {hidden ? (
+          <div className={styles.registerWorld}>
+            <h2>전부 {searched}덕인 세상 가입하기</h2>
+            <form onSubmit={registerworld}>
+              <input
+                type="text"
+                placeholder="세상 코드를 입력해주세요."
+                required
+                onChange={codeChange}
+                value={code}
+              />
+              {errorMsg !== "" ? <h4>{errorMsg}</h4> : null}
+            </form>
+            <button onClick={registerworld} className={styles.complete}>
+              가입
+            </button>
+            <button onClick={closeHandler} className={styles.close}>
+              닫기
+            </button>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }

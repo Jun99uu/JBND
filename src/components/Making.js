@@ -10,6 +10,8 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
+import styles from "./Making.module.css";
+import earth from "../img/earth.png";
 
 const db = getFirestore();
 
@@ -76,78 +78,85 @@ function Making() {
     }
   };
 
-  //   const tmpworld = async () => {
-  //     const DocRef = doc(db, "World", name);
-  //     try {
-  //       await updateDoc(DocRef, {
-  //         Member: arrayUnion(`${uuidv4()}`),
-  //       });
-  //     } catch (e) {
-  //       console.error("Error adding document: ", e);
-  //     }
-  //   };
-
   const submitHandler = (e) => {
     e.preventDefault();
     registerworld();
   };
 
   return (
-    <div>
-      <h1>당신의 세상을 만들어보세요!</h1>
-      <h4>최대 3개의 세상에만 속할 수 있어요.</h4>
-      <hr />
+    <div className={styles.box}>
+      <div className={styles.intro}>
+        <h1>당신의 세상을 만들어보세요!</h1>
+        <h4>최대 3개의 세상에만 속할 수 있어요.</h4>
+      </div>
 
-      <form onSubmit={submitHandler}>
-        <h1>전부 '{name}'덕인 세상🌍</h1>
-        <h3>당신이 만드려는 세상, 전부 누구덕인 세상인가요?</h3>
-        <input
-          placeholder="내 세상의 주인, 이름을 작성해주세요!"
-          type="text"
-          required
-          value={name}
-          onChange={nameHandler}
-        />
-        <h2>당신은 당신의 세상을…</h2>
-        <input
-          type="radio"
-          readOnly
-          id="사랑"
-          checked={emotion === "사랑"}
-          onClick={() => emotionHandler("사랑")}
-        />
-        <label htmlFor="사랑">사랑해요💛</label>
+      <div className={styles.coverbox}>
+        <div className={styles.secondbox}>
+          <img src={earth} alt="earth" className={styles.earth}></img>
+          <div className={styles.makeworld}>
+            <form onSubmit={submitHandler} className={styles.makeform}>
+              <h1>전부 '{name}'덕인 세상🌍</h1>
+              <h3>
+                당신이 만드려는 세상,
+                <br className={styles.enter} />
+                전부 누구덕인 세상인가요?
+              </h3>
+              <input
+                placeholder="내 세상의 주인, 이름을 작성해주세요!"
+                type="text"
+                required
+                value={name}
+                onChange={nameHandler}
+                className={styles.worldname}
+              />
+              <h2>당신은 당신의 세상을…</h2>
+              <input
+                type="radio"
+                readOnly
+                id="사랑"
+                checked={emotion === "사랑"}
+                onClick={() => emotionHandler("사랑")}
+                className={styles.radio}
+              />
+              <label htmlFor="사랑">사랑해요💛</label>
 
-        <input
-          type="radio"
-          id="좋아"
-          readOnly
-          checked={emotion === "좋아"}
-          onClick={() => emotionHandler("좋아")}
-        />
-        <label htmlFor="좋아">좋아해요😉</label>
+              <input
+                type="radio"
+                id="좋아"
+                readOnly
+                checked={emotion === "좋아"}
+                onClick={() => emotionHandler("좋아")}
+                className={styles.radio}
+              />
+              <label htmlFor="좋아">좋아해요😉</label>
 
-        <input
-          type="radio"
-          id="팬"
-          readOnly
-          checked={emotion === "팬"}
-          onClick={() => emotionHandler("팬")}
-        />
-        <label htmlFor="팬">팬이에요😍</label>
+              <input
+                type="radio"
+                id="팬"
+                readOnly
+                checked={emotion === "팬"}
+                onClick={() => emotionHandler("팬")}
+                className={styles.radio}
+              />
+              <label htmlFor="팬">팬이에요😍</label>
 
-        <input
-          type="radio"
-          id="미워"
-          readOnly
-          checked={emotion === "미워"}
-          onClick={() => emotionHandler("미워")}
-        />
-        <label htmlFor="미워">미운정이 무서워요😎</label>
-        <br />
-        <button>만들기</button>
-      </form>
-      {error ? <h4>{error}</h4> : null}
+              <input
+                type="radio"
+                id="미워"
+                readOnly
+                checked={emotion === "미워"}
+                onClick={() => emotionHandler("미워")}
+                className={styles.radio}
+              />
+              <label htmlFor="미워">미운정이 무서워요😎</label>
+              <br />
+              {error ? <h4>{error}</h4> : null}
+              <br />
+              <button>만들기</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

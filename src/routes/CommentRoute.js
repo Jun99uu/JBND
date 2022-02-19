@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getAuth } from "firebase/auth";
 import { doc, getFirestore, getDoc } from "firebase/firestore";
+import styles from "./CommentRoute.module.css";
 
 const db = getFirestore();
 
@@ -61,37 +62,43 @@ function CommentRoute() {
   }, []);
 
   return (
-    <div>
-      <button
-        onClick={() => {
-          navigate(-1);
-        }}
-      >
-        뒤로가기
-      </button>
-      <h1>댓글</h1>
-      <MakingComment
-        email={email}
-        name={name}
-        worldname={worldname}
-        ID={ID}
-        photo={photoURL}
-      />
-      <hr />
-      <div>
-        {saved.map((savedObject) => (
-          <CommentList
-            key={savedObject.id}
-            worldname={worldname}
-            ID={ID}
-            commentID={savedObject.id}
-            date={savedObject.date}
-            email={savedObject.email}
-            name={savedObject.name}
-            photo={savedObject.photo}
-            comment={savedObject.comment}
-          />
-        ))}
+    <div className={styles.container}>
+      <div className={styles.box}>
+        <div className={styles.upper}>
+          <h1>댓글🎈</h1>
+          <button
+            onClick={() => {
+              navigate(-1);
+            }}
+            className={styles.backBtn}
+          >
+            뒤로가기
+          </button>
+        </div>
+
+        <MakingComment
+          email={email}
+          name={name}
+          worldname={worldname}
+          ID={ID}
+          photo={photoURL}
+        />
+        <hr />
+        <div>
+          {saved.map((savedObject) => (
+            <CommentList
+              key={savedObject.id}
+              worldname={worldname}
+              ID={ID}
+              commentID={savedObject.id}
+              date={savedObject.date}
+              email={savedObject.email}
+              name={savedObject.name}
+              photo={savedObject.photo}
+              comment={savedObject.comment}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

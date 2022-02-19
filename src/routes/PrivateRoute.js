@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import styles from "./PrivateRoute.module.css";
 
 function PrivateRoute({ children }) {
   const auth = getAuth();
@@ -24,8 +25,8 @@ function PrivateRoute({ children }) {
   }
 
   return (
-    <div>
-      <h1>Loading...</h1>
+    <div className={styles.box}>
+      <h1 className={styles.loader}>Loading...</h1>
     </div>
   );
 }

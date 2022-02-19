@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
+import styles from "./Login.module.css";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -43,7 +44,12 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className={styles.box}>
+      <h2>
+        전부 네 덕인 세상을
+        <br className={styles.enter} />
+        만들어보세요!
+      </h2>
       <form onSubmit={onSubmitHandler}>
         <input
           placeholder="Email"
@@ -52,6 +58,7 @@ function Login() {
           required
           onChange={onChangeHandler}
         />
+        <br />
         <input
           placeholder="Password"
           type="password"
@@ -60,9 +67,12 @@ function Login() {
           onChange={onChangeHandler}
         />
         {errorDisplay === null ? null : <div>{errorDisplay}</div>}
-        <button>완료</button>
+        <br />
+        <button className={styles.loginbtn}>완료</button>
+        <button onClick={onClickHandler} className={styles.signupbtn}>
+          가입
+        </button>
       </form>
-      <button onClick={onClickHandler}>회원가입</button>
     </div>
   );
 }

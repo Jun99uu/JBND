@@ -1,0 +1,215 @@
+@font-face {
+  font-family: "GowunBatang-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "GowunBatang-Regular";
+}
+
+.firstbox {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 500px;
+    height: 500px;
+    opacity: 0;
+  }
+}
+
+.aboutbox {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  text-align: center;
+  color: white;
+  width: 700px;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  border-radius: 2rem;
+  background: #c25479; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #cf775c,
+    #c25479
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #cf775c,
+    #c25479
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  transition: all 0.3s;
+}
+
+.aboutbox h1 {
+  font-size: 6rem;
+}
+
+.aboutbox h2 {
+  color: black;
+}
+
+.aboutbox:hover {
+  transform: scale(1.1);
+}
+
+.aboutbox:hover::after {
+  content: "";
+  border-radius: 100%;
+  transform: rotate(-45deg);
+  border: 6px solid #fdeff4;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+.line {
+  display: flex;
+  justify-content: center;
+}
+
+.secondbox {
+  margin-top: 150px;
+  margin-bottom: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.makebtn {
+  border: 0;
+  outline: 0;
+  font-size: 15rem;
+  background-color: transparent;
+}
+
+.makebtn:hover {
+  animation-name: text-shadow-pop-br;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-direction: alternate;
+}
+
+@keyframes text-shadow-pop-br {
+  0% {
+    text-shadow: 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555, 0 0 #555555,
+      0 0 #555555, 0 0 #555555, 0 0 #555555;
+    -webkit-transform: translateX(0) translateY(0);
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    text-shadow: 1px 1px #555555, 2px 2px #555555, 3px 3px #555555,
+      4px 4px #555555, 5px 5px #555555, 6px 6px #555555, 7px 7px #555555,
+      8px 8px #555555;
+    -webkit-transform: translateX(-15px) translateY(-15px);
+    transform: translateX(-15px) translateY(-15px);
+  }
+}
+
+.thirdbox {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.worldbtn {
+  text-align: center;
+  width: 500px;
+  padding: 30px;
+  border-radius: 2rem;
+  background-color: #fdeff4;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+}
+
+.worldlist {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutbox {
+    width: 80%;
+  }
+
+  .aboutbox h1 {
+    font-size: 3rem;
+  }
+
+  .aboutbox h2 {
+    color: black;
+    font-size: 1rem;
+  }
+
+  .makebox > h1 {
+    font-size: 1.5rem;
+  }
+
+  .makebtn {
+    font-size: 6rem;
+    background-color: transparent;
+  }
+
+  .worldbtn {
+    width: 60%;
+  }
+
+  .worldbtn h2 {
+    font-size: 1.5rem;
+    border-radius: 1rem;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .aboutbox {
+    width: 80%;
+  }
+
+  .aboutbox h1 {
+    font-size: 3rem;
+  }
+
+  .aboutbox h2 {
+    color: black;
+    font-size: 1rem;
+  }
+
+  .makebox > h1 {
+    font-size: 1.2rem;
+  }
+
+  .makebox > h3 {
+    font-size: 1rem;
+  }
+
+  .makebtn {
+    font-size: 5rem;
+    background-color: transparent;
+  }
+
+  .worldbtn {
+    width: 60%;
+    padding: 20px;
+  }
+
+  .worldbtn h2 {
+    font-size: 1rem;
+    border-radius: 1rem;
+  }
+}

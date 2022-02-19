@@ -10,6 +10,7 @@ import {
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styles from "./CommentList.module.css";
 
 const db = getFirestore();
 
@@ -112,29 +113,34 @@ function CommentList({
   };
 
   return (
-    <div>
-      <h4>
+    <div className={styles.box}>
+      <div className={styles.profile}>
         <img src={profile} width="40px" height="40px" />
-        {name}
-      </h4>
-      <h5>
-        {year}년 {month}월 {day}일 {hour}시 {min}분
-      </h5>
-      {modify ? (
-        <div>
-          <input
-            placeholder="수정할 내용을 입력해주세요."
-            value={modiComment}
-            onChange={commentHandler}
-          />
+        <div className={styles.infor}>
+          <h4>{name}</h4>
+          <h5>
+            {year}년 {month}월 {day}일 {hour}시 {min}분
+          </h5>
         </div>
+      </div>
+      {modify ? (
+        <input
+          placeholder="수정할 내용을 입력해주세요."
+          value={modiComment}
+          onChange={commentHandler}
+          className={styles.modiCom}
+        />
       ) : (
-        <p>{comment}</p>
+        <div className={styles.comment}>{comment}</div>
       )}
       {authEmail === email ? (
-        <div>
-          <button onClick={modifyHandler}>{modiBtn}</button>
-          <button onClick={deleteHandler}>삭제</button>
+        <div className={styles.twoBtn}>
+          <button onClick={modifyHandler} className={styles.modiBtn}>
+            {modiBtn}
+          </button>
+          <button onClick={deleteHandler} className={styles.deleteBtn}>
+            삭제
+          </button>
         </div>
       ) : null}
     </div>

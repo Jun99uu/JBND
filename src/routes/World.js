@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { getAuth, updateProfile } from "firebase/auth";
 import BoardList from "../components/BoardList";
 import {
   collection,
@@ -7,11 +8,20 @@ import {
   getFirestore,
   query,
   orderBy,
+  doc,
+  getDoc,
+  updateDoc,
+  arrayRemove,
+  deleteDoc,
 } from "firebase/firestore";
+import styles from "./World.module.css";
 
 const db = getFirestore();
 
 function World() {
+  const auth = getAuth();
+  const user = auth.currentUser;
+  const email = user.email;
   const { worldname } = useParams();
   const navigate = useNavigate();
   const createBtn = () => {
@@ -30,6 +40,19 @@ function World() {
       like: [],
     },
   ]);
+  const [code, setCode] = useState("");
+  const [onCode, setOnCode] = useState(false);
+
+  useEffect(async () => {
+    const docRef = doc(db, "World", worldname);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      const key = docSnap._document.data.value.mapValue.fields.Key.stringValue;
+      setCode(key);
+    } else {
+      console.log("No such document!");
+    }
+  }, []);
 
   useEffect(async () => {
     setBoard([]);
@@ -37,7 +60,6 @@ function World() {
     const q = query(docRef, orderBy("Date", "desc"));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      // console.log(doc.id, " => ", doc.data());
       setBoard((prevState) => [
         ...prevState,
         {
@@ -55,26 +77,79 @@ function World() {
     });
   }, []);
 
+  const secessionBtn = async () => {
+    const message =
+      "탈퇴를 진행한 이후 재가입을 위해선 세상코드를 다시 받아야합니다.\n탈퇴하시겠습니까?";
+    if (window.confirm(message)) {
+      const docRef = doc(db, "UserInfo", email);
+      const worldRef = doc(db, "World", worldname);
+      const docSnap = await getDoc(worldRef);
+      const membernum =
+        docSnap._document.data.value.mapValue.fields.Member.arrayValue.values
+          .length;
+
+      await updateDoc(docRef, {
+        WorldList: arrayRemove(worldname),
+      });
+      if (membernum < 2) {
+        await deleteDoc(doc(db, "World", worldname));
+      } else {
+        await updateDoc(worldRef, {
+          Member: arrayRemove(email),
+        });
+      }
+
+      navigate("/");
+    }
+  };
+
+  const getCodeBtn = () => {
+    setOnCode((prevState) => !prevState);
+  };
+
   return (
-    <div>
-      <h1>안녕하슈 여기는 {worldname}의 세상임</h1>
-      <button onClick={createBtn}>작성하기</button>
-      <div>
+    <div className={styles.container}>
+      <div className={styles.box}>
+        <h1 className={styles.intro}>
+          어서오세요,
+          <br className={styles.enter} /> {worldname}의 세상입니다✨
+        </h1>
+        <div className={styles.thrBtn}>
+          <button onClick={createBtn} className={styles.draw}>
+            작성하기
+          </button>
+          <button onClick={secessionBtn} className={styles.secssion}>
+            탈퇴
+          </button>
+          <button onClick={getCodeBtn} className={styles.code}>
+            세상코드
+          </button>
+        </div>
+
+        {onCode ? (
+          <div className={styles.viewCode}>
+            세상코드를 공유해서 함께 덕질하세요!
+            <br />
+            {code}
+          </div>
+        ) : null}
         <div>
-          {board.map((boardObject) => (
-            <BoardList
-              worldname={worldname}
-              key={boardObject.key}
-              id={boardObject.id}
-              date={boardObject.date}
-              email={boardObject.email}
-              name={boardObject.name}
-              image={boardObject.image}
-              posting={boardObject.posting}
-              hashtag={boardObject.hashtag}
-              like={boardObject.like}
-            />
-          ))}
+          <div className={styles.feed}>
+            {board.map((boardObject) => (
+              <BoardList
+                worldname={worldname}
+                key={boardObject.key}
+                id={boardObject.id}
+                date={boardObject.date}
+                email={boardObject.email}
+                name={boardObject.name}
+                image={boardObject.image}
+                posting={boardObject.posting}
+                hashtag={boardObject.hashtag}
+                like={boardObject.like}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

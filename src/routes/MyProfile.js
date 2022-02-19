@@ -10,6 +10,7 @@ import {
 } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
+import styles from "./MyProfile.module.css";
 
 const db = getFirestore();
 const storage = getStorage();
@@ -111,44 +112,56 @@ function MyProfile() {
   };
 
   return (
-    <div>
-      <h1>{name}님의 프로필이에요</h1>
-      <form onSubmit={onSaveImg}>
-        {attachment ? (
-          <img src={attachment} width="100px" height="100px" />
-        ) : (
-          <img src={prevPhoto} width="100px" height="100px" />
-        )}
-        <br />
-        <input
-          name="file"
-          type="file"
-          accept="image/*"
-          onChange={handleOnChange}
-          value={profile}
-        />
-        <br />
-        <button>저장</button>
-      </form>
-      <h2>
-        나이 : {age}
-        <br />
-        닉네임 : {nickname}
-      </h2>
-      <h3>소속된 세상 리스트</h3>
-      {world.length === 0 ? (
-        <h4>아직 소속된 세상이 없네요😢</h4>
-      ) : (
-        world.map((worldname) => (
-          <div key={worldname}>
-            <Link to={`/world/${worldname}`}>
-              <button>{`전부 ${worldname}덕인 세상`}</button>
-            </Link>
-
-            <br />
+    <div className={styles.container}>
+      <div className={styles.box}>
+        <h1>
+          {name}님의
+          <br className={styles.enter} /> 프로필이에요
+        </h1>
+        <form onSubmit={onSaveImg}>
+          {attachment ? (
+            <img src={attachment} className={styles.profileImg} />
+          ) : (
+            <img src={prevPhoto} className={styles.profileImg} />
+          )}
+          <br />
+          <input
+            name="file"
+            type="file"
+            accept="image/*"
+            onChange={handleOnChange}
+            value={profile}
+          />
+          <br />
+          <button className={styles.saveBtn}>저장</button>
+        </form>
+        <h2>
+          나이 : {age}
+          <br />
+          닉네임 : {nickname}
+        </h2>
+      </div>
+      <div className={styles.secondBox}>
+        <div className={styles.listBox}>
+          <h3>소속된 세상 리스트</h3>
+        </div>
+        {world.length === 0 ? (
+          <div className={styles.worldBox}>
+            <h4>아직 소속된 세상이 없네요😢</h4>
           </div>
-        ))
-      )}
+        ) : (
+          world.map((worldname) => (
+            <div key={worldname}>
+              <button className={styles.worldBox}>
+                <Link
+                  to={`/world/${worldname}`}
+                  className={styles.link}
+                >{`전부 ${worldname}덕인 세상 🌍`}</Link>
+              </button>
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 }

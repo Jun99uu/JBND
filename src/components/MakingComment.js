@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { doc, getFirestore, setDoc } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
+import styles from "./MakingComment.module.css";
 
 const db = getFirestore();
 
@@ -61,7 +62,7 @@ function MakingComment({ email, name, worldname, ID, photo }) {
   }, [date]);
 
   return (
-    <div>
+    <div className={styles.box}>
       <h4>{name}</h4>
       <form onSubmit={commentSubmitHandler}>
         <input
