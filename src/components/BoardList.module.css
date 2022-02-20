@@ -1,14 +1,14 @@
 .box {
   background-color: white;
   width: 80%;
-  margin: auto;
-  margin-top: 50x;
-  margin-bottom: 50px;
   padding: 30px;
   border-radius: 1.5rem;
   box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
     0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
   position: relative;
+  margin-top: 50x;
+  margin-bottom: 50px;
+  margin-left: 10%;
 }
 
 .photo {
@@ -138,6 +138,7 @@
 @media screen and (max-width: 768px) {
   .box {
     width: 95%;
+    margin: 2.5%;
   }
   .name {
     font-weight: bold;
@@ -184,5 +185,6 @@
   .box {
     width: 100%;
     padding: 15px;
+    margin-left: 0%;
   }
 }

@@ -147,6 +147,7 @@ function World() {
                 posting={boardObject.posting}
                 hashtag={boardObject.hashtag}
                 like={boardObject.like}
+                className={styles.feedbox}
               />
             ))}
           </div>

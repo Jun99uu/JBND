@@ -63,12 +63,13 @@
   margin-bottom: 30px;
 }
 
-.feed {
-  margin-top: 30px;
-}
-
 .enter {
   display: none;
+}
+
+.feed {
+  margin-top: 30px;
+  text-align: center;
 }
 
 @media screen and (max-width: 900px) {
